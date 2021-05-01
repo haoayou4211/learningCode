@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>单例模式02</title>
+</head>
+<body>
+  
+  <script>
+    /**
+     * 单例模式改造
+     *  + 需要把instance变量保存下来
+     *  + sington 是一个函数，里面可以判断 可以返回
+     *  + 以闭包的形式执行一段代码
+     *  + 为了保存构造函数，将其写入闭包内
+     *  + 如果你觉得使用需要new, 你就写
+     **/
+
+
+    const Person = (function (){
+      // 真实构造函数体
+      class Person{
+        constructor(){
+          this.name = 'jack'
+          // console.log(arguments)
+          // [this.name, this.age, this.sex] = [...arguments]
+        }
+        syaHi(){
+          console.log('hello world')
+        }
+      }
+
+      // 这个变量因为在不会被销毁的函数执行空间里面，所以会一直存在
+      let instance = null
+      // 全局变量接受的这个函数
+      return function sington(...arg){
+        if(!instance) instance = new Person(...arg)
+        return instance
+      }
+    })()
+
+     const p1 = Person('jack', 15, '男')
+     const p2 = Person()
+     console.log(p1, p2)
+     console.log(p1 === p2)
+
+
+  </script>
+</body>
+</html>

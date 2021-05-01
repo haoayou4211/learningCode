@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>单例模式</title>
+</head>
+<body>
+  
+  <script>
+     class Person{
+       constructor(){
+         this.name = 'jack'
+       }
+     }
+
+
+    //  加入单例核心代码
+    let instance = null
+    function sington(){
+      if(!instance) instance = new Person()
+      return instance
+    }
+
+    // 第一次调用时，instance是null,给instance赋值，
+    // 从此instance是person实例
+    // 第二次调用时，instance有值，
+    // 因为instance是全局对象， 没有另外新增一个构造函数，还是第一次的实例地址，所以 p1 === p2
+    const p1 = sington()
+    const p2 = sington()
+    console.log(p1 === p2)
+  </script>
+</body>
+</html>

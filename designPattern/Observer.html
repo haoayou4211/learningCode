@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>观察者模式</title>
+</head>
+<body>
+  <!-- 
+    特殊说明
+      + 观察者 和 发布订阅 两个设计模式
+  -->
+
+
+  <script>
+    /**
+     * 观察者模式
+     *  + 例子：监控
+     *    => 当被观察者触发了一些条件的时候，观察者就会触发技能
+     *  + 观察者模式： 监控一个对象的状态，一旦状态发生变化，马上触发技能
+     *    => 需要两个构造函数来实现
+     *      1. 创建观察者
+     *        => 属性，自己的状态
+     *        => 队列，记录都有谁观察着自己， 数组[]
+     *        => 方法，能设置自己的状态
+     *        => 方法，添加观察者
+     *        => 方法，删除观察者
+     *      2. 创建被观察者
+     *        => 需要一个身份证明
+     *        => 需要一个技能
+    */
+
+    // 观察者
+    class observed{
+      constructor(name, fn){
+        this.name = name
+        this.fn = fn
+      }
+      // 监听
+      watchState(){
+
+      }
+    }
+
+
+    class subject{
+      constructor(name, state) {
+        this.name = name
+        this.state = state
+        // 用来保存观察我的人
+        this.observers = []
+      }
+      setState(val){
+        this.state = val
+        this.observers.forEach(item =>{
+          // 把每一个观察者的技能触发
+          item.fn(this.name)
+        })
+      }
+      addObservers(obs){
+        // 判断一下，观察者是否存在，已经存在的话就不再添加了
+        this.observers = this.observers.filter(item => item !== obs)
+        this.observers.push(obs)
+      }
+      removeObservers(obs){
+        this.observers = this.observers.filter(item => item !== obs)
+      }
+    }
+
+    
+    const bzr = new observed('班主任' , (name) => { console.log(`${name} 叫家长`)})
+    const xz = new observed('校长' , (name) => { console.log(`${name} 叫班主任`)})
+    const njzr = new observed('年级主任' , (name) => { console.log(`${name} 你哪个班的`)})
+
+
+
+    const xm = new subject('小明', '学习')
+    xm.addObservers(bzr)
+    xm.addObservers(xz)
+    xm.addObservers(njzr)
+
+    console.log(xm)
+  </script>
+</body>
+</html>

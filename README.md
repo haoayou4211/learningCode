@@ -12,3 +12,6 @@ lifeCycle vue生命周期
 ES6的一些小知识
 
 为了使浏览器支持es6，需要安装babel
+
+# TypeScript
+
