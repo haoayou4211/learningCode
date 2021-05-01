@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>生命周期说明</title>
+  <style>
+  </style>
+</head>
+<body>
+  
+  <div id="app">
+    <input type="text" v-model="msg">
+    <button @click="destroyedHtml">销毁测试</button>
+  </div>
+
+
+
+  <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+  <script>
+    let timer = null
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        msg: 'vue生命周期测试'
+      },
+      // 页面创建
+      beforeCreate() {
+        // 此阶段，el与data均未开始创建，无法访问方法
+        console.log('创建前', this.$el)
+        console.log('创建前', this.$data)
+      },
+      created() {
+        // 此阶段，data已经创建完成，但是el还未，页面未渲染，可以访问method方法
+        console.log('创建结束', this.$el)
+        console.log('创建结束', this.$data)
+      },
+
+      // 页面挂载
+      beforeMount() {
+        // 此阶段,el和data均已创建完成，但是el还未渲染到页面中
+        console.log('挂载前', this.$el)
+        console.log('挂载前', this.$data)
+      },
+      mounted() {
+        // 此阶段，el和data均已创建完成，并且el已经挂载在页面中，该阶段只会执行一次
+        console.log('挂载结束', this.$el)
+        console.log('挂载结束', this.$data)
+        // 添加一个定时器
+        this.createTimer()
+      },
+
+      // 页面更新
+      beforeUpdate() {
+        // 此阶段，发生在视图层(view)变化前，不是data改变前触发
+        // 在大多数情况下，你应该避免在此期间更改状态。如果要相应状态改变，通常最好使用计算属性或 watcher取而代之
+        console.log('更新前', this.$el)
+        console.log('更新前', this.$data)
+      },
+      updated() {
+        // 此阶段，view层和data均改变后发生
+        console.log('更新结束', this.$el)
+        console.log('更新结束', this.$data)
+      },
+
+      // 页面销毁
+      beforeDestroy() {
+        // 此阶段，页面实例完全可用
+        console.log('销毁前', this.$el)
+        console.log('销毁前', this.$data)
+      },
+      destroyed() {
+        // 页面移除所有实例，不会再触发任何周期函数，但dom结构依然存在
+        // 需要手动解绑一些绑定的事件,否则会持续运行
+        console.log('销毁结束', this.$el)
+        console.log('销毁结束', this.$data)
+        // 解绑定时器
+        clearInterval(timer)
+      },
+      methods: {
+        destroyedHtml(){
+          this.$destroy()
+        },
+        // 一个定时器
+        createTimer(){
+          timer = setInterval(() => {
+            console.log(1)
+          }, 1000);
+        }
+      },
+    })
+  </script>
+</body>
+</html>
