@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>const与var的区别</title>
+</head>
+<body>
+  
+
+  <script>
+    // var es = 'es6'
+    //     es = 'es2015'
+
+    // console.log(es)
+
+    // ES3
+    // var BASE_URL = '' // 都大写时，默认为常量
+
+
+    // ES5
+    // 修改一个属性/获取一个属性
+    // Object.defineProperty(window, 'es', {
+    //   value: 'es6',
+    //   writable: false // 不可修改
+    // }) 
+    // console.log(es)
+    // es = 'es2015'
+    // console.log(es)
+
+
+    // ES6
+    // const es = 'es6'
+    // console.log(es)
+    // es = 'es2015'    // 常量不可修改
+    // console.log(es)
+
+    // var str = 'es6'
+    // var str = 'es2015'
+    // console.log(str)  // var允许变量重名
+
+    // const str = 'es6'
+    // const str = 'es2015'
+    // console.log(str)  // const 不允许重复申明
+
+
+    // var str = 'es6'
+    // console.log(window.str) // var申明时候属于window,const定义不属于window对象
+
+
+    // var 可以变量提升  const不可变量提升
+    // console.log(str)
+    // var str = 'es6'
+
+    // =>
+    // var str
+    // console.log(str)
+    // str = 'es6'
+
+
+    // 先定义后调用会出现暂时性的死区
+    // if(true){
+    //   console.log(str)
+    //   const str = 'es6'
+    // }
+
+    // const 存在块级作用域
+    // if(true){
+    //   var str = 'es6'
+    // }
+    // console.log(str)
+
+
+    // const esObj = {
+    //   name: 'es6',
+    //   year: '2015'
+    // }
+    // Object.freeze(esObj) // 浅层冻结
+    // esObj.name = 'es2015'
+    // console.log(esObj)
+    
+    // const arr = ['es6', 'es7', 'es8']
+    // arr[0] = 'es2015'
+    // console.log(arr)
+
+    // 此处需要了解JS变量在内存中如何进行存储
+    // 基本数据类型都是存在栈内存中，obj是存储在堆内存中，引用地址无变化
+    // 堆内存中的数据是可以进行改变的
+
+    const esObj = {
+      name: 'es6',
+      year: '2015',
+      arr: ['es6', 'es7', 'es8']
+    }
+    freezeObj(esObj)
+    // Object.freeze(esObj) // 浅层冻结，无法冻结深层次冻结
+    esObj.arr[0] = 'es2016'
+    console.log(esObj)
+    
+    function freezeObj(obj){
+      if(typeof obj === 'object'){
+        Object.freeze(obj)
+      }
+      Object.keys(obj).forEach(key =>{
+        if(typeof obj[key] === 'object'){
+          freezeObj(obj[key]) // 递归
+        }
+      })
+    }
+
+    // 变量使用let   常量使用const
+    // 默认优先情况下使用const, 要改变的时候使用let
+
+  </script>
+</body>
+</html>

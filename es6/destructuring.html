@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>解构赋值说明</title>
+</head>
+<body>
+  
+  <script>
+
+    // const course = {
+    //   name: 'es6',
+    //   price: 500,
+    //   tearcher: {
+    //     name: 'yang',
+    //     age: 25
+    //   }
+    // }
+    // // es5
+    // // const name = course.name
+    // // const price = course.price
+    // // es6
+    // // 左右两边结构匹配， 还可以取别名
+    // const {
+    //   name: courseName, 
+    //   price, 
+    //   tearcher: { 
+    //     name, 
+    //     age 
+    //   }
+    // } = course
+    // console.log(courseName, price, name, age)
+
+    // 数组
+    // const courseArr = ['es6', 'es7', 'es8']
+    // // es5
+    // // const a = courseArr[0]
+    // // const b = courseArr[1]
+    // // const c = courseArr[2]
+    // // es6
+    // const [a, b, c] = courseArr
+    // console.log(a, b, c)
+  
+
+    // const sum = arr => {
+    //   let result = 0
+    //   for(let i = 0; i<arr.length; i++){
+    //     result += arr[i]
+    //   }
+    //   console.log(result)
+    // }
+    // const sum = ([a,b,c]) => {
+    //   console.log(a+b+c)
+    // }
+    // sum([1,2,3])
+
+    // 设置默认值
+    // const foo = ({name, age, school = 'xx'}) => {}
+
+    // let a = 1
+    // let b = 2
+    // !([b, a] = [a, b])
+    // console.log(a, b)
+
+
+    // json
+    const json = '{"name": "es", "price": "500"}'
+    const {name, price} = JSON.parse(json)
+    console.log(name, price)
+
+
+  </script>
+</body>
+</html>

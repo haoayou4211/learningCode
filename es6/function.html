@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>箭头函数说明</title>
+</head>
+<body>
+  
+  <button id="btn">我是按钮</button>
+
+  <script>
+    // function sum(x,y){
+    //   return x + y
+    // }
+    // const res = sum(x,y)
+
+
+    // // 箭头左边指的是函数的参数，右边是方法体
+    // const sum2 = (x, y) => x + y
+    // console.log(sum2(2,3))
+
+    // // 只有一个参数情况下，小括号也可以不写
+    // const fn = x => {
+    //   // 业务代码逻辑  
+    // }
+
+
+    // 箭头函数里没有this指向，通过当前作用域链，向上层作用域找
+    // 箭头函数作为事件回调函数的时候请注意
+    // const oBtn = document.querySelector('#btn')
+    // // oBtn.addEventListener('click', function(e){
+    // //   console.log(this)
+    // //   this.style.backgroundColor = '#f00'
+    // // })
+    // oBtn.addEventListener('click', () => {
+    //   console.log(this)
+    //   this.style.backgroundColor = '#f00'
+    // })
+
+
+    // 如果定义函数内方法，需要注意
+    // const obj = {
+    //   name: 'yangge',
+    //   showName(){ // es6对象简写形式
+    //     console.log(`我的名字是${this.name}`)
+    //   },
+    //   showName2: () => {
+    //     console.log(`我的名字是${this.name}`)
+    //   }
+    // }
+    // obj.showName()
+    // obj.showName2()
+
+
+    // 箭头函数内不能使用arguments
+    // const sum = (x, y) => { 
+    //   console.log(arguments)
+    //   return x + y 
+    // }
+    // function sum2(x, y){
+    //   console.log(arguments)
+    // }
+
+
+    // 箭头函数不能作为构造函数使用
+    // // 类
+    // function Course(name, price){
+    //   this.name = name
+    //   this.price = price
+    // }
+    // const Course = (name, price){
+    //   this.name = name
+    //   this.price = price
+    // }
+    // const c1 = new Course('es', 500)
+    // console.log(c1)
+    // 箭头函数不能调用原型里面的方法
+
+  </script>
+</body>
+</html>
