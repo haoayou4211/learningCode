@@ -31,7 +31,7 @@ class Watcher{
   }
 }
 
-// 通知/收集所有watcher
+// 通知/收集所有watcher   订阅者
 class Dep{
   constructor(){
     this.subs = []

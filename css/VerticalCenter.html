@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>垂直居中</title>
+
+  <style>
+    body, html{
+      height: 100%;
+      margin: 0;
+    }
+    .boxContent{
+      width: 100%;
+      height: 100%;
+    }
+
+    .box{
+      border: 1px solid #000;
+      background-color: aqua;
+      width: 200px;
+      height: 20px;
+      padding: 10px;
+      text-align: center;
+    }
+
+    /* .boxContent{
+      position: relative;
+    }
+    .box1{
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-right: -100px;
+    }
+    .box3{
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%， -50%);
+    }
+    .box4{
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+    } */
+
+    /* .boxContent{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    } */
+
+
+
+    /* 项目中基本不使用 */
+    /* 要求父级拥有固定宽高 */
+    /* .boxContent{
+      display: table-cell;
+      text-align: center;
+      vertical-align: middle;
+      background-color: bisque;
+      width: 500px;
+      height: 500px;
+    }
+    .box6{
+      display: inline-block;
+    } */
+  </style>
+</head>
+<body>
+  <div class="boxContent">
+
+    <!-- <div class="box box1">盒子1，使用position</div> -->
+
+    <!-- <div class="box box2">盒子2，使用flex</div> -->
+
+    <!-- <div class="box box3">盒子3，使用transfrom</div> -->
+
+    <!-- <div class="box box4">盒子4，使用margin:auto</div> -->
+
+    <!-- <div class="box box5" id="box5">盒子5，使用Javascript</div> -->
+
+    <!-- <div class="box box6">盒子6，使用Javascript</div> -->
+
+  </div>
+
+
+  <script>
+    // let Html = document.documentElement, // 页面所有元素
+    //     winW = Html.clientWidth,  // 页面的宽度
+    //     winH = Html.clientHeight, // 页面的高度
+    //     boxW = box4.offsetWidth,  // 盒子的宽度
+    //     boxH = box4.offsetHeight  // 盒子的高度
+
+    // box4.style.position = 'absolute'
+    // box4.style.left = (winW - boxW) / 2 + 'px'
+    // box4.style.top = (winH - boxH) / 2 + 'px'
+        
+  </script>
+
+</body>
+</html>

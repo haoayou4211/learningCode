@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>圣杯布局 / 双飞翼布局 / flex布局</title>
+
+  <style>
+    /* 
+      圣杯布局 / 双飞翼布局 
+      => 左右固定，中间自适应
+      calc 布局   calc(100% - 400px)  性能不好
+      flex 布局
+      postion 布局
+    */
+
+    html, body{
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .clearFix{
+      clear: both;
+    }
+    .container{
+      height: 100%;
+      background-color: blanchedalmond;
+    }
+    /* .left, .right{
+      width: 200px;
+      min-height: 200px;
+      background-color: aqua;
+    } */
+
+    /* .container2 .left, 
+    .container2 .container,
+    .container2 .right{
+      float: left;
+    }
+    .container2 .container{
+      width: 100%;
+    }
+    .container2 .center{
+      margin: 0 200px;
+      min-height: 400px;
+      background-color: blanchedalmond;
+    }
+    
+    .container2 > .left{
+      margin-left: -100%;
+    }
+    .container2 > .right{
+      margin-left: -200px;
+    } */
+    /*  
+    
+    .container1{
+      padding: 0 200px;
+    }
+    .container1 .center{
+      width: 100%;
+      min-height: 400px;
+    }
+    .container1 .left, 
+    .container1 .center,
+    .container1 .right{
+      float: left;
+    }
+    .container1 > .left{
+      margin-left: -100%;
+      position: relative;
+      left: -200px;
+    }
+    .container1 > .right{
+      margin-right: -200px;
+    } */
+
+
+    .container3{
+      display: flex;
+      justify-content: space-between;
+    }
+    /* 
+      flex属性是flex-grow, flex-shrink 和 flex-basis的简写 
+        flex-grow属性定义项目的放大比例
+        flex-shrink属性定义了项目的缩小比例
+        flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间
+
+    */
+    .container3 .left,
+    .container3 .right{
+      flex:  0 0 200px;
+      background-color: cyan;
+    }
+    .container3 .center{
+      /* 不设置具体大小，自动分配剩余空间 */
+      flex: 1;
+      background-color: blanchedalmond;
+    }
+    
+  </style>
+
+</head>
+<body>
+  
+  <!-- 圣杯布局   子元素需要所有都float:left -->
+  <!-- <div class="container container1 clearFix">
+    <div class="center"></div>
+    <div class="left"></div>
+    <div class="right"></div>
+  </div> -->
+  
+  <!-- 双飞翼布局 -->
+  <!-- <div class="clearFix container2">
+    <div class="container ">
+      <div class="center">
+        center测试
+        <br>
+        哈UI第三方回电话费UI安徽的富我安徽的覅糊啊丢分哈UI第三方回电话费UI安徽的富我安徽的覅糊啊丢分哈UI第三方回电话费UI安徽的富我安徽的覅糊啊丢分哈UI第三方回电话费UI安徽的富我安徽的覅糊啊丢分哈UI第三方回电话费UI安徽的富我安徽的覅糊啊丢分哈UI第三方回电话费UI安徽的富我安徽的覅糊啊丢分哈UI第三方回电话费UI安徽的富我安徽的覅糊啊丢分哈UI第三方回电话费UI安徽的富我安徽的覅糊啊丢分
+      </div>
+    </div>
+    <div class="left"></div>
+    <div class="right"></div>
+  </div> -->
+
+
+  <div class="container3">
+    <div class="left"></div>
+    <div class="center">
+      哈UI第三方回电话费UI安徽的富我安徽的覅糊啊丢分哈UI第三方回电话费UI安徽的富我安徽的覅糊啊丢分哈UI第三方回电话费UI安徽的富我安徽的覅糊啊丢分哈UI第三方回电话费UI安徽的富我安徽的覅糊啊丢分哈UI第三方回电话费UI安徽的富我安徽的覅糊啊丢分哈UI第三方回电话费UI安徽的富我安徽的覅糊啊丢分哈UI第三方回电话费UI安徽的富我安徽的覅糊啊丢分哈UI第三方回电话费UI安徽的富我安徽的覅糊啊丢分
+    </div>
+    <div class="right"></div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>盒子模型</title>
+
+  <style>
+    .box{
+      padding: 10px;
+      margin: 10px;
+      border: 1px solid #000;
+      width: 400px;
+      text-align: center;
+    }
+
+    /* 标准盒子模型 */
+    .box1{
+      box-sizing: content-box;
+    }
+    /* 怪异盒子模型 */
+    .box2{
+      box-sizing: border-box;
+    }
+
+    /* flex弹性盒模型 */
+    /* 一个元素设置 CSS 属性 display:flex 或者 display: inline-flex，该元素就变为伸缩容器 */
+    .box3{
+      display: flex;
+    }
+
+    .box4{
+      column-count: 3;
+    }
+  </style>
+
+</head>
+<body>
+  
+  <!-- 
+      标准盒子模型
+      怪异盒子模型  IE盒子模型
+      flex弹性盒模型
+      多列布局
+   -->
+
+   <!-- 标准盒子模型 -->
+   <div class="box box1">标准盒子模型 <br/>box宽度+padding+border<br/>400+20+2</div>
+
+   <!-- 怪异盒子模型 -->
+   <div class="box box2">怪异盒子模型 <br/>宽度整体为400px</div>
+
+   <!-- flex弹性盒模型 -->
+   <div class="box box3">
+     <div class="flex1">flex1</div>
+     <div class="flex2">flex2</div>
+   </div>
+
+   <!-- 多列布局 -->
+   <div class="box box4">
+     <div class="columnItem">1</div>
+     <div class="columnItem">2</div>
+     <div class="columnItem">3</div>
+   </div>
+</body>
+</html>

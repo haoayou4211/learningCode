@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>测试</title>
+</head>
+<body>
+  <!-- 
+    使用css，让一个div消失在视野中
+    position:absolute; left:-99999
+    opcity:0
+
+   -->
+
+  <!-- 
+    说明z-index的工作原理，适用范围
+      脱离文档流  
+        将元素从普通的布局排版中拿走，其他盒子在定位的时候，会当做脱离文档流的元素不存在而进行定位  
+        只有绝对定位absolute和浮动float才会脱离文档流
+        => position
+        => transform
+      定位
+
+      使用范围：
+      网页两侧的浮动窗口（播放器，指定按钮，广告等）position
+      导航栏浮动值顶  
+      隐藏div实现弹窗功能（通过设置div定位和z-index控制div的位置和出现隐藏）
+  -->
+
+  <!-- 
+    谈谈对html5的理解
+      1）多设备，跨平台； 手机/PC
+      2）用户体验好；
+      3）新标签的可读性高，有助于开发人员定义重要内容； 标签语义化
+      6）涉及到网站的抓取和索引的时候，SEO更加友好； 标签语义化
+      4）提供了更多的多媒体元素（视频和音频）；audio  video 
+      5）很好地替代了Flash和Silverlight； canvas
+      7）可以被大量应用于移动应用程序和游戏 webGL 
+   -->
+
+  <!-- 
+    如何使div内的文字垂直居中
+    line-height
+    position:absolute; left:50%; top:50%; tranform:transition(-50%, -50%)
+    display:flex; justify-content:center; align-item:center;
+   -->
+
+  <!-- 
+    不考虑其他因素，下面哪种渲染性能比较高
+    .box a{}
+    a{}
+
+    第二种，选择器从右向左， 先找a,再找.box a
+   -->
+</body>
+</html>
