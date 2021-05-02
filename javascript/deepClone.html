@@ -42,6 +42,7 @@
       }
       return result
     }
+
     // 浅克隆2 => es6
     function shallowClone2(obj){
       let result
@@ -79,7 +80,6 @@
     /*
       弊端
         => 对象中有正则/Date也会转换成字符串
-        => 有些基本类型会进行报错，无法进行转换
     */
     function deepClone2(obj){
       const result = JSON.parse(JSON.stringify(obj))

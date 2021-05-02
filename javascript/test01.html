@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>优先级题目</title>
+</head>
+<body>
+  
+  <script>
+    
+    function A(){
+      console.log(1);
+    }
+
+    function Func() {
+      A = function(){
+        console.log(2);
+      };
+      return this;
+    }
+
+    Func.A = A;
+
+    // 箭头函数不能够被new
+    // 箭头函数没有原型链
+    Func.prototype={
+      A:() => {
+        console.log(3)
+      }
+    }
+
+    A();  // 1
+    Func.A(); // 1
+    Func().A(); // 2
+    new Func.A(); // new (Func.A()) 1
+    new Func().A(); // (new Func()).A() 3
+    new new Func().A(); // new ((new Func()).A())   
+    // 箭头函数不能被new
+    // => A is not a constructor
+
+  </script>
+</body>
+</html>

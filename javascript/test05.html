@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>问题</title>
+</head>
+
+<body>
+
+  <script>
+    /*
+     == 数据类型不一样
+      => 对象 == 字符串，对象.toString()变为字符串
+      => null == undefined, 但是和其它值比较就不在相等了
+      => NaN != NaN，NaN和任何数据都不相等
+      => 剩下的都会转化为数字
+    */
+
+    /*
+      [10] == 10 true
+        => Number([10].toString())
+
+
+      var a = ?;
+      if (a == 1 && a == 2 && a == 3) {
+        console.log('我们相等啦');
+      }
+    */
+
+    // 执行这个抽象操作时会先执行valueOf方法，如果返回的不是原始值，
+    // 会继续执行toString方法，如果返回的还不是原始值，那么会报错
+
+    // 方法1 => toString
+    // var a = {
+    //   i: 1, 
+    //   toString(){
+    //     return this.i++
+    //   }
+    // }
+
+    // // 方法2 => valueOf
+    // var a = {
+    //   i: 1, 
+    //   valueOf(){
+    //     return this.i++
+    //   }
+    // }
+
+    // 方法3 => 通过数据劫持来实现
+    // var i = 0
+    // Object.defineProperty(window, 'a', {
+    //   get() {
+    //     // console.log('get')
+    //     return ++i
+    //   }
+    // })
+
+    // Cannot redefine property: a
+    // var a = 0
+    // Object.defineProperty(window, 'a', {
+    //   get() {
+    //     // 栈内存溢出
+    //     // get拦截器当中，不能再次获取当前属性，否则会进行死循环
+    //     a = a + 1
+    //     return ++a
+    //   }
+    // })
+    // console.log(a)
+
+
+    // 方法4 
+    var a = [1,2,3]
+    a.toString = a.shift // shift删除第一项
+    if (a == 1 && a == 2 && a == 3) {
+      console.log('我们相等啦');
+    }
+  </script>
+</body>
+
+</html>

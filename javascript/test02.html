@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>优先级题目</title>
+</head>
+
+<body>
+
+  <script>
+    var x = 2; 
+    var y = {
+      x: 3,
+      
+      z: (function (x) {
+        // 自执行函数 return 前的 this 指向为 window
+        console.log(`this x: ${x}  ${this.x} --- 1`)
+        this.x *= x; 
+        x += 2;
+        console.log(`this x: ${x}  ${this.x} --- 2`)
+        return function (n) { 
+          this.x *= n; 
+          console.log(`this x: ${x}  ${this.x} --- 3`)
+          x += 3;  
+          console.log(x);  
+        }
+      })(x) // 内部有修改，this有变化
+            // 因为m(4) 执行过一次了，x变成了7
+    };
+    var m = y.z;
+    m(4); // 7
+    y.z(5); // 10
+    console.log(x, y.x); // 16  15
+  </script>
+</body>
+
+</html>
