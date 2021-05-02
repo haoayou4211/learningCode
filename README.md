@@ -22,3 +22,10 @@ ES6的一些小知识<br>
 * Layout 布局模式
 * BoxModel 盒子模型
 
+# JavaScript
+* stack 堆栈内存
+* deepClone 深拷贝浅拷贝
+* priority 优先级
+* asyncAwait 同步异步/微任务宏任务
+
+

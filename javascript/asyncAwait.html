@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>同步异步</title>
+</head>
+<body>
+  
+  <script>
+    /*
+      浏览器是多线程的
+      JS是单线程的 => 浏览器只给了JS一个线程来渲染
+      微任务 => promise async await
+      宏任务 => 定时器，callback，数据请求，事件绑定
+    */
+    async function async1() {
+        console.log('async1 start');
+        await async2();
+        console.log('async1 end');
+    }
+
+    async function async2() {
+        console.log('async2');
+    }
+
+    console.log('script start');
+
+    setTimeout(function() {
+        console.log('setTimeout');
+    }, 0)
+
+    async1();
+
+    new Promise(function(resolve) {
+        console.log('promise1');
+        resolve();
+    }).then(function() {
+        console.log('promise2');
+    });
+
+    console.log('script end');
+
+    // 先运行同步代码
+    // script start
+    // async1 start
+    // async2
+    // promise1
+    // script end
+
+    // 再运行微任务
+    // async1 end
+    // promise2
+
+    // 再运行宏任务代码
+    // setTimeout
+    
+  </script>
+</body>
+</html>

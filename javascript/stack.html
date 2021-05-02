@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>堆栈内存</title>
+</head>
+<body>
+  
+  <script>
+    //example 1
+    // 堆：存储引用类型值的空间  
+    //  => 属性名不能重复
+    //  => 数字属性名 == 字符串属性名
+    // 栈：存储基本类型值和指定代码的环境
+
+    // 定义第一个key值为'0' value是珠峰
+    // c为数字0， 则获取的是第一个值
+    // let a={}, b='0', c=0;  
+    // a[b]='珠峰'; 
+    // a[c]='培训';  
+    // console.log(a[b]);
+    // 对象和数组的区别
+    // => 数组是以数字作为索引
+    // => 对象是以数字转成字符串作为key值来获取对应的value
+
+
+    //example 2
+    // Symbol ，表示独一无二的值，最大的用法是用来定义对象的唯一属性名
+    // let a = {}, b = Symbol('1'), c = Symbol('1');  
+    // a[b] = '珠峰';
+    // a[c] = '培训';  
+    // console.log(a[b]);
+    // => 自己实现一个symbol
+    
+
+    //example 3
+    // 对象引用类型值都会变成字符串来存储
+    // 会将{}.toString()来进行存储
+    // let a = {}, b = {n:'1'}, c = {m:'2'};  
+    // a[b] = '珠峰';
+    // a[c] = '培训';  
+    // console.log(a[b]);
+    // => 关于Object.prototype.toString()方法项目中的应用，怎么检测数据类型 / valueOf 原始值的区别
+
+    // 编译机制   执行顺序
+
+
+
+    // example 4
+    // => 遇到会的题不会要'慌'，仔细想一下  
+    // => alert弹出来的内容都要转换成字符串
+    // var test = (function(i){
+    //   // i = i
+    //   return function(){
+    //       alert(i *= 2);
+    //   }
+    // })(2);
+    // test(5);
+    // 运行机制：
+    // => 立即执行的函数
+    // => 把 一个执行上下文 压缩到 栈内存去执行 执行栈  (Execution context stack)
+    // => 闭包：自定义函数实行的一个上下文，形成的函数闭包
+    // => 内存泄漏： 该销毁的不销毁
+    // GC垃圾回收机制  
+
+    
+    // example 5
+    // GO 全局对象
+    var a = 0, 
+        b = 0;
+    function A(a){
+        A = function(b){
+            alert(a + b++);
+        };
+        alert(a++);
+    }
+    A(1);
+    A(2);
+    /*
+      函数内重新定义了A, 重写了全局方法
+    */
+  </script>
+</body>
+</html>

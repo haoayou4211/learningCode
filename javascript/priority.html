@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>优先级</title>
+</head>
+<body>
+  
+  <script>
+
+    /*
+      因为是ES5语法  会进行变量提升
+      在当前作用域下，所有代码执行之前，把所有带var 和 function 关键字的提前申明和定义
+    */
+
+    function Foo() {
+      getName = function () {
+          console.log(1)
+      }
+      return this
+    }
+
+    Foo.getName = function () {
+        console.log(2)
+    }
+
+    Foo.prototype.getName = function () {
+        console.log(3)
+    }
+
+    var getName = function () {
+        console.log(4)
+    }
+
+    function getName() {
+        console.log(5)
+    }
+
+    Foo.getName() // 2
+    getName() // 4
+    Foo().getName() // 1 // 普通函数执行 
+    // Foo() 修改到了全局getName()   
+    // return this => window
+    getName() // 1
+
+    // js优先级执行
+    // 无参数new 和 有参数new
+    new Foo.getName() // 2 new (Foo.getName())
+    new Foo().getName() // 3 原型上的方法 (new Foo()).getName()
+    new new Foo().getName() // 3 => new ((new Foo()).getName())
+
+
+    // => 原生js实现new
+  </script>
+</body>
+</html>
