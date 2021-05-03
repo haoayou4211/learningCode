@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数组去重</title>
+</head>
+
+<body>
+
+
+  <script>
+    let arr = [12, 23, 12, 15, 25, 23, 25, 14, 16]
+
+    // method 1 => forEach 循环 + Array.prototype.includes(数组原型链中的方法， 用来判断一个数组是否包含一个指定的值)
+    const method01 = (arr) => {
+      let arr2 = []
+      arr.forEach(item => {
+        !arr2.includes(item) && arr2.push(item)
+      })
+      return arr2
+    }
+
+    // method 2 => ES6去重
+    // => new set去重， array.form 将其转换成数组
+    // let method02 = (Array.from(new Set(arr)))
+    // let method02 = ([...(new Set(arr))])
+    // console.log(method02)
+
+
+    // method 3 => forEach 循环 + Array.prototype.includes(数组原型链中的方法， 用来判断一个数组是否包含一个指定的值)
+    const method03 = (arr) => {
+      let arr2 = []
+      arr.filter(item => {
+        return !arr2.includes(item) && arr2.push(item)
+      })
+      return arr2
+    }
+
+
+    // method04 => splice 数组塌陷，索引会进行改变
+    // 拿出当前项和后面的内容进行比较
+    const method04 = (arr) => {
+      for (let i = 0; i < arr.length - 1; i++) {
+        let item = arr[i],
+          args = arr.slice(i + 1) // 当前项的后一项包含的数组
+        if (args.indexOf(item) > -1) {
+          // 1. 原来数组改变， 如果i继续++,则会产生数组塌陷
+          // 2. i-- 能解决数组塌陷的问题，但是性能不好，当前项一旦删除，后面项索引都要变化
+          arr.splice(i, 1) // 移除当前项
+          i--
+        }
+      }
+      return arr
+    }
+
+
+    // method 05 => ES6 Map
+    const method05 = (arr) => {
+      let map = new Map()
+      let arr2 = new Array()
+      for (let i = 0; i < arr.length; i++) {
+        if (map.has(arr[i])) {
+          map.set(arr[i], true);
+        } else {
+          map.set(arr[i], false);
+          arr2.push(arr[i])
+        }
+      }
+      console.log(map)
+      return arr2
+    }
+
+
+    // method06 => 利用对象的方法来判断是否存在
+    const method06 = (arr) => {
+      let obj = {}
+      for (let i = 0; i < arr.length; i++) {
+        let item = arr[i]
+        // 取出对象所有key值集合判断是否存在
+        //   => 注意：Object.keys 对象的key是字符串
+        if (Object.keys(obj).some(objKey => objKey == item)) {
+          // typeof obj[item] !== undefined
+          // 存在
+          arr[i] = arr[arr.length - 1]
+          arr.length--
+          i--
+          continue
+        }
+        obj[item] = item
+      }
+      console.log(arr)
+    }
+
+    
+    // method07 => 先排序再相邻比较  正则
+    const method07 = (arr) => {
+      let newArr = arr.sort((a, b) => a - b) // 排序规则
+      newArr = newArr.join('@') + '@' // 讲数组用@符号分割,为了保证最后一项也有@符号
+      const reg = /(\d+@)\1*/g // 拿到所有的数字+@,出现一个0-多次可能跟他相同的这一项
+      let arr2 = []
+      newArr.replace(reg, (val, group1) => {
+        // arr2.push(Number(group1.slice(0, group1.length - 1)))
+        arr2.push(parseFloat(group1))
+        // 该函数指定字符串中的首个字符是否是数字。
+        // 如果是，则对字符串进行解析，直到到达数字的末端为止，然后以数字返回该数字，而不是作为字符串。
+      })
+      return arr2
+    }
+  </script>
+
+</body>
+
+</html>

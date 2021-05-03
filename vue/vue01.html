@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>手写ObjectDefineProperty</title>
+</head>
+
+<body>
+
+  姓名：<span id="spanName"></span><br><input type="text" id="inpName">
+
+  <script>
+    
+    /**
+     * 1. 对原始数据克隆
+     * 2. 给当前对象中，所有数据进行拦截,分别给对象中每个对象进行监听
+    */
+    // vue 2.0
+    // let obj = {
+    //   name: ''
+    // }
+    // let newObj = JSON.parse(JSON.stringify(obj)) // 此处进行深拷贝
+
+    // // 不能再次拿到原始数据，否则会出现死循环
+    // Object.defineProperty(obj, 'name', {
+    //   get() {
+    //     console.log('获取')
+    //     return newObj.name
+    //   },
+    //   set(val) {
+    //     if (val === newObj.name) return // => 相同值不触发
+    //     newObj.name = val
+    //     console.log(`这里进行了更新 ${val}`)
+    //     observer()
+    //   }
+    // })
+
+    
+
+
+
+    /**
+     * 不用对对象中每个数据进行操作
+    */
+    // vue 3.0
+    let obj = {}
+    obj = new Proxy(obj, { // 直接监听所有属性对象
+      get(target, prop){ // target => obj,   prop => 属性
+        // console.log('A')
+        return target[prop]
+      },
+      set(target, prop, value){
+        // console.log('B')
+        target[prop] = value
+        observer()
+      }
+    }) 
+
+    // 拿到最新的值，赋值给
+    function observer() {
+      const name = obj.name // 这样就只会获取一次
+      spanName.innerText = name
+      inpName.value = name
+    }
+
+    setTimeout(() => {
+      obj.name = '羊羊'
+    }, 1000);
+
+    // 此处不使用箭头函数，因为箭头函数的this指向会指向window
+    // oninput 为监听input输入
+    inpName.oninput = function(){
+      // console.log(this)
+      obj.name = this.value
+    }
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数组排序</title>
+</head>
+
+<body>
+
+
+  <script>
+    // 冒泡排序、快速排序、插入排序
+    const arr = [12, 8, 24, 16, 1];
+
+    // method01 => 冒泡排序
+    /* 1. 从当前元素起，向后依次比较每一对相邻元素，若逆序则交换 */
+    /* 2. 对所有元素均重复以上步骤，直至最后一个元素 */
+    const method01 = (arr) => {
+      let temp = null
+      for(let i = 0; i < arr.length; i++){
+        for(let j = 0; j < arr.length -1 -i; j++){
+          if(arr[j] > arr[j+1]){ // 当前项大于后一项
+            temp = arr[j]
+            arr[j] = arr[j + 1]
+            arr[j+i] = temp
+          }
+        }
+      }
+      return arr
+    }
+
+    
+    // method02 => 插入排序
+    // 插入排序是指在待排序的元素中，假设前面n-1(其中n>=2)个数已经是排好顺序的，
+    // 现将第n个数插到前面已经排好的序列中，然后找到合适自己的位置，
+    // 使得插入第n个数的这个序列也是排好顺序的。
+    // 按照此法对所有元素进行插入，直到整个序列排为有序的过程，称为插入排序。
+    const method02 = (arr) => {
+      // 准备一个新数组
+      let handle = []
+      // 将第一个值插入到新数组中
+      handle.push(arr[0])
+      // 从第二张开始比较之后所有的牌
+      for(let i = 1; i < arr.length; i++ ){
+        let A = arr[i] // 新抓的牌
+
+        for(let j = handle.length -1; j >= 0; j--){ // 遍历手上已有的牌
+          let B = handle[j] // 获取手上的牌
+          if(A > B){ // 如果新抓的牌大于手上的牌,则把A放B之后
+            handle.splice(j+1, 0, A)
+            break
+          }
+          // 如果A比第一张牌还小，则将A插入到第一位
+          if(j === 0){
+            handle.unshift(A)
+          }
+        }
+      }
+      return handle
+    }
+
+
+    // method03 快速排序
+    // 通过一趟排序将待排记录分隔成独立的两部分，
+    // 其中一部分记录的关键字均比另一部分的关键字小，
+    // 则可分别对这两部分记录继续进行排序，以达到整个序列有序
+    const method03 = (arr) => {
+      
+    }
+
+  </script>
+
+</body>
+
+</html>
