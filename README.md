@@ -8,7 +8,8 @@ mvvm响应式原理，以及实现了一个vue实例<br>
 
 # ES6
 ES6的一些小知识<br>
-* 为了使浏览器支持es6，需要安装babel
+* babel 为了使浏览器支持es6，需要安装babel
+* 20210504，持续更新es6~es11的新特性
 
 # designPattern
 一些常见的设计模式<br>

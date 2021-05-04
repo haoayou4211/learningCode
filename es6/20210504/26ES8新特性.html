@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>async await</title>
+</head>
+
+<body>
+  <script>
+    
+    
+    // // async 返回的是一个promise对象
+    // async function fn(){
+    //   // 返回结果不是一个promise对象， 这个函数的返回结果就是一个resovle
+    //   // return '哈哈哈'
+    //   // 抛出错误 throw new Error, 返回的结果是一个reject
+    //   // throw new Error('失败')
+    //   // 返回的结果是一个promise对象, 看promise内部返回是状态
+    // }
+    // const result = fn()
+    // console.log(result)
+
+
+    async function fn(){
+      try {
+        await fn1().then(value =>{
+          console.log('我成功了！')
+        })
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
+    function fn1(){
+      return new Promise((resolve, rejecet) => {
+        resolve('错误')
+      })
+    }
+
+    fn()
+
+
+
+
+
+    
+    
+  </script>
+</body>
+
+</html>

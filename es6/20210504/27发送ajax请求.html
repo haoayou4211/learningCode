@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>async await</title>
+</head>
+
+<body>
+  <script>
+    
+    
+    function sendAjax(url){
+      return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest() 
+        xhr.open('get', url)
+
+        xhr.send()
+
+        xhr.onreadystatechange = function(){
+          if(xhr.readyState === 4){
+            if( xhr.status === 200){
+              // 成功
+              resolve(xhr.response)
+            }else{
+              reject(xhr.status)
+            }
+          }
+        }
+      })
+    }
+    
+    // const result = sendAjax('http://api.apiopen.top/getJoke')
+    // console.log(result)
+
+    // sendAjax('http://api.apiopen.top/getJoke').then(value => {
+    //   console.log(value)
+    // })
+    
+
+
+    async function main(){
+      let result = await sendAjax('http://api.apiopen.top/getJoke')
+      let tianiq = await sendAjax('https://www.baidu.com/sugrec?prod=pc_his&from=pc_web&json=1&sid=33838_33967_31660_33849_33855_33607_26350_33891&hisdata=%5B%7B%22time%22%3A1619836918%2C%22kw%22%3A%22%E6%AD%A3%E5%88%99%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E4%BB%A5%E4%BB%80%E4%B9%88%E5%BC%80%E5%A4%B4%22%7D%2C%7B%22time%22%3A1619836935%2C%22kw%22%3A%22js%20%E6%AD%A3%E5%88%99%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E4%BB%A5%E4%BB%80%E4%B9%88%E5%BC%80%E5%A4%B4%22%7D%2C%7B%22time%22%3A1619837189%2C%22kw%22%3A%22es6%20%E9%98%AE%E4%B8%80%E5%B3%B0%22%7D%2C%7B%22time%22%3A1619839785%2C%22kw%22%3A%22js%20%E6%AD%A3%E5%88%99%E5%8C%B9%E9%85%8D%7B%7B%7D%7D%E4%B8%AD%E7%9A%84%E5%80%BC%22%2C%22fq%22%3A2%7D%2C%7B%22time%22%3A1619842692%2C%22kw%22%3A%22vue%20%E6%9B%B4%E6%96%B0%E5%89%8D%E5%92%8C%E6%9B%B4%E6%96%B0%E7%BB%93%E6%9D%9F%22%7D%2C%7B%22time%22%3A1619860675%2C%22kw%22%3A%22git%E4%BD%BF%E7%94%A8%E7%89%B9%E5%88%AB%E6%85%A2%22%7D%2C%7B%22time%22%3A1619861321%2C%22kw%22%3A%22%E4%B8%8D%E8%83%BD%E5%8D%95%E7%8B%AC%E4%BD%BF%E7%94%A8babel%22%7D%2C%7B%22time%22%3A1619861614%2C%22kw%22%3A%22%E5%8D%B0%E5%BA%A6%E5%BC%80%E5%A7%8B%E6%8E%A5%E5%8F%97%E4%B8%AD%E5%9B%BD%E7%AD%89%E5%9B%BD%E6%8F%B4%E5%8A%A9%22%7D%2C%7B%22time%22%3A1619868204%2C%22kw%22%3A%22vscode%E8%AE%BE%E7%BD%AEnode_module%E4%B8%8D%E5%9C%A8%E6%BA%90%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86%E4%B8%AD%22%7D%2C%7B%22time%22%3A1619868658%2C%22kw%22%3A%22%E5%81%87%E6%9C%9F%E5%8E%BB%E6%B5%B7%E8%BE%B9%E4%B8%8D%E8%A6%81%E9%A3%9F%E7%94%A8%E6%B5%B7%E8%99%B9%22%7D%5D&_t=1620131986588&bs=%E5%A4%A9%E6%B0%94&csor=0')
+      console.log(tianiq)
+    }
+    main()
+    
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>class</title>
+</head>
+
+<body>
+  <script>
+    // es5 创建构造函数
+
+  {
+    // function mobile(brand, price){
+    //   this.brand = brand
+    //   this.price = price
+    // }
+    // // 添加方法
+    // mobile.prototype.play = function(){
+    //   console.log(`${this.brand} 打电话,价格 ${this.price}`)
+    // }
+
+
+
+    // es6  创建构造函数
+    // class mobile{
+    //   constructor(brand, price){
+    //     this.price = price
+    //     this.brand = brand
+    //   }
+    //   play(){
+    //     console.log(`${this.brand} 打电话,价格 ${this.price}`)
+    //   }
+    // }
+
+    // let huawei = new mobile('华为', 5000)
+    // huawei.play()
+  }
+
+  {
+    // es5  
+    // 实例对象的属性和函数对象的属性不相同， 对于这样的属性我们称之为静态成员
+    // function phone(){}
+    // phone.name = '手机'
+    // phone.change = function(){
+    //   console.log('改变')
+    // }
+
+    // phone.prototype.size = '5.5inch'
+
+    // es6
+    // static 属于类而不属于实例对象
+    class phone{
+      static name = '手机' 
+      static change(){
+        console.log('改变')
+      }
+    }
+
+    let nokia = new phone()
+    console.log(nokia.name)
+    console.log(phone.name)
+  }
+
+  </script>
+</body>
+
+</html>

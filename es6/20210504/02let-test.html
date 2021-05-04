@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>let</title>
+  <style>
+    .item {
+      width: 150px;
+      height: 100px;
+      margin-right: 30px;
+      border: 1px solid #000;
+      display: inline-block;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2 class="page-header">点击切换颜色</h2>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+  </div>
+
+  <script>
+    let items = document.getElementsByClassName('item')
+
+    // for (var i = 0; i < items.length; i++){
+    //   items[i].onclick = function(){
+    //     // 修改当前点击元素的背景色
+    //     // this.style.background = '#000'
+
+    //     // i为全局变量，每次都会自增，此时i的变量值为3
+    //     items[i].style.background = 'pick' // Cannot read property 'style' of undefined
+    //   }
+    // }
+
+    for (let i = 0; i < items.length; i++){
+      items[i].onclick = function(){
+        // i只在此代码块中有效
+        items[i].style.background = '#000' // Cannot read property 'style' of undefined
+      }
+    }
+  </script>
+</body>
+
+</html>

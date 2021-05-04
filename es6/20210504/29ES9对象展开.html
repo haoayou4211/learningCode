@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ES9对象方法展开</title>
+</head>
+
+<body>
+  <script>
+    // es6 扩展运算符只支持数组的展开， es9增加可以对对象进行展开
+    // function connect ({host, port, ...user}){
+    //   console.log(host, port, user)
+    // }
+
+    // connect({
+    //   host: '127.0.0.1',
+    //   port: '3306',
+    //   username: '小明',
+    //   password: '123456'
+    // })
+
+    const skillOne = {
+      q: '天音波'
+    }
+    const skillTwo = {
+      w: '金钟罩'
+    }
+    console.log({...skillOne, ...skillTwo})
+
+  </script>
+</body>
+
+</html>

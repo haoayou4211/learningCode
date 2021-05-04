@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>promise</title>
+</head>
+
+<body>
+  <script>
+    // new promise 是内置构造函数 promise 执行一次 
+    // 2. promise 的回调函数也会执行一次，这个回调函数给我们提供两个形参（函数）
+    // 3. promise 类的实例没有then方法，是原型对象的方法
+
+
+    // new Promise((resolve, reject) => {})
+
+    //  ES5
+    function myPromise(callback){ // 回调调用
+      // 需要判断executor 是否是一个function
+      if(typeof callback !== 'function'){
+        throw new Error('传递进来的不是一个函数')
+      }
+
+      // 设置默认值
+      this.status = 'pending' // 等待中
+      this.value 
+      this.reason 
+
+      const resolve = value =>{
+        if(this.status === 'pending'){
+          this.status = 'resolve'
+          this.value = value
+        }
+      }
+
+      const reject = reason =>{
+        if(this.status === 'pending'){
+          this.status = 'reject'
+          this.reason = reason
+        }
+      }
+      callback(resolve, reject)
+    }
+
+    // then 为原型链上的方法
+    // 将then方法里面成功与失败的回调函数作为当前类的实例即可
+    myPromise.prototype.then = function (success, fail){
+      if(typeof success !== 'function'){
+        // 报错
+        throw new Error('传递进来的不是一个函数')
+      }
+      if(this.status === 'resolve'){
+        success(this.value)
+      }else{
+        fail(this.reason)
+      }
+    }
+
+    myPromise.prototype.catch = function(fail){
+      if(typeof fail !== 'function'){
+        // 报错
+        throw new Error('传递进来的不是一个函数')
+      }
+      fail(this.reason)
+    }
+    
+
+    new myPromise((resolve, reject) => {
+      reject()
+    })
+    // .then((data) => {
+    //   console.log('我成功了！')
+    // }, () => {
+    //   console.error('失败了')
+    // })
+    .catch(()=>{
+        console.error('失败了')
+    })
+
+
+
+
+  </script>
+</body>
+
+</html>

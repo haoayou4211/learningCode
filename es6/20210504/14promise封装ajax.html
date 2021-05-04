@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>promise</title>
+</head>
+
+<body>
+  <script>
+      // 1. 创建对象
+      const p = new Promise(function(resolve, reject){
+        const xhr = new XMLHttpRequest()
+        xhr.open('get', 'https://api.apiopen.top/getJoke')
+        xhr.send()
+        // 绑定事件
+        xhr.onreadystatechange = function(){
+          // 请求已经接收完成
+          if(xhr.readyState === 4){
+            if(xhr.status === 200){
+              // 请求成功
+              // console.log(xhr.response)
+              resolve(xhr.response)
+            }else{
+              // console.log(xhr.status)
+              reject(xhr.status)
+            }
+          }
+        }
+      })
+
+      p.then(function(value){
+        console.log(value)
+      })
+      .catch(function(err){
+        console.error(err)
+      })
+  </script>
+</body>
+
+</html>

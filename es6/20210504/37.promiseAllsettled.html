@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>promise.allSettled</title>
+</head>
+
+<body>
+  <script>
+      const p1 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve('商品数量-1')
+        }, 1000);
+      })
+
+      const p2 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          reject('商品数量-2')
+        }, 1000);
+      })
+
+      // 两个值都会返回， 每个值的失败/成功状态
+      // const result = Promise.allSettled([p1, p2])
+
+
+      // 两个值都成功，就成功，两个值都失败，就失败
+      const result = Promise.all([p1, p2])
+
+      console.log(result)
+  </script>
+</body>
+
+</html>

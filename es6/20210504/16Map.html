@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>map</title>
+</head>
+
+<body>
+  <script>
+    let m = new Map()
+
+    // 添加  map的key可以是对象
+    m.set('name', '嘤嘤嘤')
+    m.set('change', function(){
+      console.log(123)
+    })
+
+    let key = {
+      school: '学习'
+    }
+    m.set(key, ['哈哈哈','嘻嘻嘻','来来来'])
+
+
+
+    // 删除
+    m.delete('name')
+
+    // 获取
+    console.log(m.get('change'))
+    console.log(m.get(key))
+
+    // 清空
+    m.clear()
+    
+
+    console.log(m)
+  </script>
+</body>
+
+</html>

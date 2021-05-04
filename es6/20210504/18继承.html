@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>class</title>
+</head>
+
+<body>
+  <script>
+    // es5 继承
+    // function phone(price, brand){
+    //     this.price = price
+    //     this.brand = brand
+    // }
+    // phone.prototype.play = function(){
+    //   console.log('我可以玩')
+    // }
+    // function smartPhone(price, brand, name){
+    //   phone.call(this, price, brand)
+    //   this.name = name
+    // }
+    // smartPhone.prototype = new phone() // 原型需要继承
+    // smartPhone.prototype.photo = function(){
+    //   console.log('我可以拍照')
+    // }
+    
+
+
+    // es6继承
+    class phone{
+      constructor(price, brand){
+        this.brand = brand
+        this.price = price
+      }
+      // 父类的成员属性
+      play(){
+        console.log('我可以玩')
+      }
+    }
+    class smartPhone extends phone{
+      constructor(brand, price, name){
+        super(brand, price) // 调用父类构造方法进行初始化
+        this.name = name
+      }
+      photo(){
+        console.log('我可以拍照')
+      }
+      // 子类可以对父类方法进行重写
+      play(){
+        // 成员方法内，不能调用父类同名方法
+        console.log('很多游戏')
+      }
+    }
+    const huawei = new smartPhone(5000,'S10','华为')
+    console.log(huawei)
+    huawei.play()
+  </script>
+</body>
+
+</html>

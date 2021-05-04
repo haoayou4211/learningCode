@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>箭头函数</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: aqua;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="ad"></div>
+  <script>
+    // 需求1 点击 div 2s 后颜色变成红色
+    // ad.addEventListener('click', function(){
+    //   setTimeout(() => {
+    //     this.style.backgroundColor = '#ff0000'
+    //   }, 2000);
+    // })
+
+    // 需求2 从数组中返回偶数的元素
+    const arr = [1,6,9,10,100,25]
+    // // const result = arr.filter(function(item){
+    // //   if(item % 2 === 0){
+    // //     return true
+    // //   }else{
+    // //     return false
+    // //   }
+    // // })
+    // // console.log(result)
+
+    // 箭头函数适合与this无关的回调，定时器，数组的方法回调
+    // 箭头函数不时候与 this 有关的回调，时间回调，对象的方法
+    // // const result = arr.filter(item => item % 2 === 0)
+    // // console.log(result)
+
+  </script>
+</body>
+
+</html>

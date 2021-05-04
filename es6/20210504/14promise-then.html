@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>promise</title>
+</head>
+
+<body>
+  <script>
+      // 创建primise对象
+      const p = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve('用户数据')
+        }, 1000);
+      })
+
+      // then方法的返回结果是promise对象，对象状态有回调函数的结果来决定
+      // 如果回调函数中返回的结果是 非pormises 类型的属性，状态为成功,返回值为对象的成功的值
+      const result = p.then((value)=>{
+        console.log(value)
+        // 1. 非promise类型的属性
+        // return 'iloveyou'
+        // 2. 是promise对象
+        // return new Promise((resolve, reject) => {
+        //   resolve('ok')
+        // })
+        // 抛出错误
+        throw new Error('抛出错误')
+      })
+      console.log(result)
+  </script>
+</body>
+
+</html>

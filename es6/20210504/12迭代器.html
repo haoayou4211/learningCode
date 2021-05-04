@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>迭代器</title>
+</head>
+
+<body>
+  <script>
+    // 迭代器 为各种不同的数据结构提供统一的访问机制
+
+    const xyj = ['ts', 'swk', 'zbj', 'ts']
+    // 使用for of 遍历
+    // => for of 返回的 value
+    // => for in 返回的 key
+    // for(let i of xyj){
+    //   console.log(i)
+    // }
+    // for(let i in xyj){
+    //   console.log(i)
+    // }
+
+
+    // // 先创建symbol迭代器对象
+    // let iterator = xyj[Symbol.iterator]()
+    // // 调用对象的next()方法，每调用一次，指针会往后移一位
+    // console.log(iterator.next())
+    // console.log(iterator.next())
+    // console.log(iterator.next())
+    // console.log(iterator.next())
+    // console.log(iterator.next())
+
+
+    // 自定义遍历数据时候，会想着使用迭代器
+    const banji = {
+      name: '135班',
+      students: [
+        '羊', '冯', '婉', '云'
+      ],
+      // 实现自定义的遍历数组
+      [Symbol.iterator](){
+        // 索引变量
+        let index = 0
+        // this指向
+        const _this = this
+        return {
+          next(){
+            if(index < _this.students.length){
+              const result = {value: _this.students[index], done: false}
+              index ++
+              return result
+            }
+            // done === true  说明遍历完成
+            return {value: undefined, done: true}
+          }
+        }
+      }
+    }
+    
+    // 遍历这个对象
+    for(let v of banji){
+      console.log(v)
+    }
+
+  </script>
+</body>
+
+</html>

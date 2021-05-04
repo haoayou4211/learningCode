@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>箭头函数</title>
+</head>
+
+<body>
+  <script>
+    // ES6 允许使用[箭头] (=>) 定义函数
+    // 声明一个函数
+    // let fn = function (){
+
+    // }
+    // let fn = (a, b) => {
+    //   return a + b
+    // }
+    // // 调用函数
+    // console.log(fn(1,2))
+
+    // 1. this指向是静态的
+    //  => this始终指向函数声明时所在作用域下的this的值
+    // function getName(){
+    //   console.log(this + '-----function')
+    //   console.log(this.name)
+    // }
+    // // 因为是在全局作用域下声明，所以this指向window
+    // // this指向是静态的
+    // let getName2 = () => {
+    //   console.log(this + '-----=>')
+    //   console.log(this.name)
+    // }
+    // window.name = '羊羊'
+    // // getName()
+    // // getName2()
+    // const school = {
+    //   name: '哈哈哈'
+    // }
+
+    // // call 方法调用
+    // getName.call(school) // this指向改变了
+    // getName2.call(school) // this指向依然是全局对象
+
+
+    // 2. 不能作为构造实例化对象
+    // let Person = (name, age) => {
+    //   this.name = name
+    //   this.age = age
+    // }
+    // let me = new Person('我', '18') // Person is not a constructor
+    // console.log(me)
+
+    // 3. 不能使用 arguments 对象
+    // let fn = () => {
+    //   console.log(arguments)
+    // }
+    // fn() // arguments is not defined
+
+    // 4. 箭头函数简写
+    //  => 省略下括号， 当形参有且只有一个的时候
+    // let add = n => {
+    //   return n + n
+    // }
+    // console.log(add(1))
+
+    // => 省略花括号，当代码题只有一条语句的时候
+    let add = n => n + n  // return语句也必须省略 而且语句的执行结果就是函数的返回值
+    console.log(add(1))
+  </script>
+</body>
+
+</html>

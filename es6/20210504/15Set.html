@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>set</title>
+</head>
+
+<body>
+  <script>
+    
+    // set 会自动去重
+
+    let s = new Set()
+    let s2 = new Set(['好事','坏事', '小事', '坏事', '大事'])
+
+
+    // // 大小
+    // console.log(s2.size)
+    // // 添加
+    // s2.add('喜事')
+    // // 删除
+    // s2.delete('好事')
+    // // 检测
+    // s2.has('喜事')
+    // console.log(s2.has('糟心事'))
+    // // 清空
+    // s2.clear()
+
+    // console.log(s2)
+
+
+
+    // 
+    let arr = [1,2,3,4,5,4,3,2,1]
+
+    // 数组去重
+    let result = [... new Set(arr)]
+    console.log(result)
+    // 交集
+    let arr2 = [4,5,6,7,1]
+    let result2 = [... new Set(arr)].filter(item =>  new Set(arr2).has(item) )
+    console.log(result2)
+
+    // 并集
+    let result3 = [...new Set([...arr, ...arr2])]
+    console.log(result3)
+
+    // 差集
+    let result4 = [... new Set(arr)].filter(item =>  !(new Set(arr2).has(item)))
+    console.log(result4)
+
+    let result5 = [... new Set(arr2)].filter(item =>  !(new Set(arr).has(item)))
+    console.log(result5)
+  </script>
+</body>
+
+</html>

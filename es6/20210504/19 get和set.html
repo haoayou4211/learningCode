@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>get 和 set</title>
+</head>
+
+<body>
+  <script>
+    // es6
+    class phone{
+      get price(){
+        console.log('价格属性被读取了')
+      }
+      set price(newVal){
+        console.log('价格属性被修改了')
+      }
+      // 父类的成员属性
+      play(){
+        console.log('我可以玩')
+      }
+    }
+    const s = new phone()
+    console.log(s.price)
+    s.price = 'free'
+    huawei.play()
+  </script>
+</body>
+
+</html>

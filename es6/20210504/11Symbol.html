@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Symbol</title>
+</head>
+
+<body>
+  <script>
+    // symbol 表示独一无二的值
+    //   => 值是唯一的吗，用来解决命名冲突
+    //   => 不能和其它数据进行运算
+    //   => 不嫩使用for in遍历，但是可以使用Reflect.ownKyes来获取对象的所有键名
+
+    {
+      let s1 = Symbol()
+      // console.log(s, typeof s)
+      let s2 = Symbol()
+      // console.log(s2, typeof s2)
+      console.log(s1 === s2)
+
+      // => for 创建的对象相等
+      let s3 = Symbol.for('哈哈哈')
+      let s4 = Symbol.for('哈哈哈')
+      console.log(s3 === s4)
+    }
+
+
+    // let result = s1 + s1 // Cannot convert a Symbol value to a number
+
+    // unll  underfined  symbol  string object number boolear
+
+    // => symbol 创建对象属性
+    {
+      let game = {
+        name: '游戏'
+      }
+
+      let method = {
+        up: Symbol(),
+        down: Symbol()
+      }
+
+      game[method.up] = function(){
+        console.log('改变1')
+      }
+      game[method.down] = function(){
+        console.log('改变2')
+      }
+
+
+      
+      let youxi = {
+        name: '狼人杀',
+        [Symbol('say')]:function(){ 
+          console.log('说话')
+        }
+      }
+    }
+
+
+    // => symbol 内置值
+
+    // // Symbol.hasInstance
+    // class Person{
+    //   // 当其他对象使用instanceof运算符，判断是否为该对象实例时，会调用这个方法
+    //   static[Symbol.hasInstance](param){
+    //     console.log(param)
+    //     console.log('我被用来检测类型')
+    //   }
+    // }
+    // let o = {111:111}
+    // console.log(o instanceof Person)
+
+
+    // // Symbol.isConcatSpreadable
+    // const arr = [1,2.3]
+    // const arr2 = [4,5,6]    
+    // // 控制对象用于合并时， 是否可以展开
+    // arr2[Symbol.isConcatSpreadable] = false
+    // console.log(arr.concat(arr2))
+
+
+    
+  </script>
+</body>
+
+</html>
